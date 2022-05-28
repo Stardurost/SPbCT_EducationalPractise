@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fitnes" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Администраторы">
+    <Key>
+      <PropertyRef Name="Номер_паспорта" />
+    </Key>
+    <Property Name="ФИО" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_паспорта" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+    <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Пароль" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Пол" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Заявка_на_обучение" Relationship="Self.FK_Заявка_на_обучение_Администраторы" FromRole="Администраторы" ToRole="Заявка_на_обучение" />
+    <NavigationProperty Name="Предоставление_cкидки" Relationship="Self.FK_Предоставление_cкидки_Администраторы" FromRole="Администраторы" ToRole="Предоставление_cкидки" />
+  </EntityType>
+  <EntityType Name="Запись_на_занятие">
+    <Key>
+      <PropertyRef Name="Номер_занятия" />
+    </Key>
+    <Property Name="Номер_занятия" Type="Int32" Nullable="false" />
+    <Property Name="Тренер" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Ученик" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Дата" Type="DateTime" Precision="0" />
+    <Property Name="Время_начала" Type="Time" Precision="7" />
+    <Property Name="Время_окончания" Type="Time" Precision="7" />
+    <NavigationProperty Name="Клиенты" Relationship="Self.FK_Запись_на_занятие_Клиенты" FromRole="Запись_на_занятие" ToRole="Клиенты" />
+    <NavigationProperty Name="Тренеры" Relationship="Self.FK_Запись_на_занятие_Тренеры" FromRole="Запись_на_занятие" ToRole="Тренеры" />
+  </EntityType>
+  <EntityType Name="Заявка_на_инд_занятия">
+    <Key>
+      <PropertyRef Name="Номер_заявки" />
+    </Key>
+    <Property Name="Клиент" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Тренер" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Цель_занятий" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_заявки" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Клиенты" Relationship="Self.FK_Заявка_на_инд_занятия_Клиенты" FromRole="Заявка_на_инд_занятия" ToRole="Клиенты" />
+    <NavigationProperty Name="Тренеры" Relationship="Self.FK_Заявка_на_инд_занятия_Тренеры" FromRole="Заявка_на_инд_занятия" ToRole="Тренеры" />
+  </EntityType>
+  <EntityType Name="Заявка_на_обучение">
+    <Key>
+      <PropertyRef Name="Номер_заявки" />
+    </Key>
+    <Property Name="Номер_заявки" Type="Int32" Nullable="false" />
+    <Property Name="Тренер" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Администратор" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Дата" Type="DateTime" Precision="0" />
+    <Property Name="Квалификация" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Администраторы" Relationship="Self.FK_Заявка_на_обучение_Администраторы" FromRole="Заявка_на_обучение" ToRole="Администраторы" />
+    <NavigationProperty Name="Тренеры" Relationship="Self.FK_Заявка_на_обучение_Тренеры" FromRole="Заявка_на_обучение" ToRole="Тренеры" />
+  </EntityType>
+  <EntityType Name="Индивидуальное_занятия">
+    <Key>
+      <PropertyRef Name="Номер_занятия" />
+    </Key>
+    <Property Name="Упражнение" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Количество_повторов" Type="Int32" />
+    <Property Name="Выполнение_упражнения" Type="Boolean" />
+    <Property Name="Тренер" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Ученик" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_занятия" Type="Int32" Nullable="false" />
+    <Property Name="Дата" Type="DateTime" Precision="0" />
+    <Property Name="Время_начала" Type="Time" Precision="7" />
+    <Property Name="Время_окончания" Type="Time" Precision="7" />
+    <NavigationProperty Name="Клиенты" Relationship="Self.FK_Индивидуальное_занятия_Клиенты" FromRole="Индивидуальное_занятия" ToRole="Клиенты" />
+    <NavigationProperty Name="Тренеры" Relationship="Self.FK_Индивидуальное_занятия_Тренеры" FromRole="Индивидуальное_занятия" ToRole="Тренеры" />
+  </EntityType>
+  <EntityType Name="Клиенты">
+    <Key>
+      <PropertyRef Name="Номер_паспорта" />
+    </Key>
+    <Property Name="ФИО" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_паспорта" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+    <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Пароль" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Пол" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Запись_на_занятие" Relationship="Self.FK_Запись_на_занятие_Клиенты" FromRole="Клиенты" ToRole="Запись_на_занятие" />
+    <NavigationProperty Name="Заявка_на_инд_занятия" Relationship="Self.FK_Заявка_на_инд_занятия_Клиенты" FromRole="Клиенты" ToRole="Заявка_на_инд_занятия" />
+    <NavigationProperty Name="Индивидуальное_занятия" Relationship="Self.FK_Индивидуальное_занятия_Клиенты" FromRole="Клиенты" ToRole="Индивидуальное_занятия" />
+    <NavigationProperty Name="Предоставление_cкидки" Relationship="Self.FK_Предоставление_cкидки_Клиенты" FromRole="Клиенты" ToRole="Предоставление_cкидки" />
+  </EntityType>
+  <EntityType Name="Предоставление_cкидки">
+    <Key>
+      <PropertyRef Name="Номер" />
+    </Key>
+    <Property Name="Номер" Type="Int32" Nullable="false" />
+    <Property Name="Администратор" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Клиент" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Размер_скидки" Type="Int32" />
+    <NavigationProperty Name="Администраторы" Relationship="Self.FK_Предоставление_cкидки_Администраторы" FromRole="Предоставление_cкидки" ToRole="Администраторы" />
+    <NavigationProperty Name="Клиенты" Relationship="Self.FK_Предоставление_cкидки_Клиенты" FromRole="Предоставление_cкидки" ToRole="Клиенты" />
+  </EntityType>
+  <EntityType Name="Рабочие_дни">
+    <Key>
+      <PropertyRef Name="Номер_записи" />
+    </Key>
+    <Property Name="Номер_записи" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Дата" Type="DateTime" Precision="0" />
+    <Property Name="Время_начала" Type="Time" Precision="7" />
+    <Property Name="Время_окончания" Type="Time" Precision="7" />
+    <Property Name="Тренер" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Тренеры" Relationship="Self.FK_Рабочие_дни_Тренеры" FromRole="Рабочие_дни" ToRole="Тренеры" />
+  </EntityType>
+  <EntityType Name="Тренеры">
+    <Key>
+      <PropertyRef Name="Номер_паспорта" />
+    </Key>
+    <Property Name="ФИО" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="Номер_паспорта" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+    <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Пароль" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Пол" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Запись_на_занятие" Relationship="Self.FK_Запись_на_занятие_Тренеры" FromRole="Тренеры" ToRole="Запись_на_занятие" />
+    <NavigationProperty Name="Заявка_на_инд_занятия" Relationship="Self.FK_Заявка_на_инд_занятия_Тренеры" FromRole="Тренеры" ToRole="Заявка_на_инд_занятия" />
+    <NavigationProperty Name="Заявка_на_обучение" Relationship="Self.FK_Заявка_на_обучение_Тренеры" FromRole="Тренеры" ToRole="Заявка_на_обучение" />
+    <NavigationProperty Name="Индивидуальное_занятия" Relationship="Self.FK_Индивидуальное_занятия_Тренеры" FromRole="Тренеры" ToRole="Индивидуальное_занятия" />
+    <NavigationProperty Name="Рабочие_дни" Relationship="Self.FK_Рабочие_дни_Тренеры" FromRole="Тренеры" ToRole="Рабочие_дни" />
+  </EntityType>
+  <Association Name="FK_Заявка_на_обучение_Администраторы">
+    <End Role="Администраторы" Type="Self.Администраторы" Multiplicity="0..1" />
+    <End Role="Заявка_на_обучение" Type="Self.Заявка_на_обучение" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Администраторы">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Заявка_на_обучение">
+        <PropertyRef Name="Администратор" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Предоставление_cкидки_Администраторы">
+    <End Role="Администраторы" Type="Self.Администраторы" Multiplicity="0..1" />
+    <End Role="Предоставление_cкидки" Type="Self.Предоставление_cкидки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Администраторы">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Предоставление_cкидки">
+        <PropertyRef Name="Администратор" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Запись_на_занятие_Клиенты">
+    <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="0..1" />
+    <End Role="Запись_на_занятие" Type="Self.Запись_на_занятие" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Запись_на_занятие">
+        <PropertyRef Name="Ученик" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Запись_на_занятие_Тренеры">
+    <End Role="Тренеры" Type="Self.Тренеры" Multiplicity="0..1" />
+    <End Role="Запись_на_занятие" Type="Self.Запись_на_занятие" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тренеры">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Запись_на_занятие">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_инд_занятия_Клиенты">
+    <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Заявка_на_инд_занятия" Type="Self.Заявка_на_инд_занятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Заявка_на_инд_занятия">
+        <PropertyRef Name="Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_инд_занятия_Тренеры">
+    <End Role="Тренеры" Type="Self.Тренеры" Multiplicity="0..1" />
+    <End Role="Заявка_на_инд_занятия" Type="Self.Заявка_на_инд_занятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тренеры">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Заявка_на_инд_занятия">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_обучение_Тренеры">
+    <End Role="Тренеры" Type="Self.Тренеры" Multiplicity="0..1" />
+    <End Role="Заявка_на_обучение" Type="Self.Заявка_на_обучение" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тренеры">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Заявка_на_обучение">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Индивидуальное_занятия_Клиенты">
+    <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="0..1" />
+    <End Role="Индивидуальное_занятия" Type="Self.Индивидуальное_занятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Индивидуальное_занятия">
+        <PropertyRef Name="Ученик" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Индивидуальное_занятия_Тренеры">
+    <End Role="Тренеры" Type="Self.Тренеры" Multiplicity="0..1" />
+    <End Role="Индивидуальное_занятия" Type="Self.Индивидуальное_занятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тренеры">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Индивидуальное_занятия">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Предоставление_cкидки_Клиенты">
+    <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="0..1" />
+    <End Role="Предоставление_cкидки" Type="Self.Предоставление_cкидки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Предоставление_cкидки">
+        <PropertyRef Name="Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Рабочие_дни_Тренеры">
+    <End Role="Тренеры" Type="Self.Тренеры" Multiplicity="0..1" />
+    <End Role="Рабочие_дни" Type="Self.Рабочие_дни" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тренеры">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Рабочие_дни">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FITNESSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Администраторы" EntityType="Self.Администраторы" />
+    <EntitySet Name="Запись_на_занятие" EntityType="Self.Запись_на_занятие" />
+    <EntitySet Name="Заявка_на_инд_занятия" EntityType="Self.Заявка_на_инд_занятия" />
+    <EntitySet Name="Заявка_на_обучение" EntityType="Self.Заявка_на_обучение" />
+    <EntitySet Name="Индивидуальное_занятия" EntityType="Self.Индивидуальное_занятия" />
+    <EntitySet Name="Клиенты" EntityType="Self.Клиенты" />
+    <EntitySet Name="Предоставление_cкидки" EntityType="Self.Предоставление_cкидки" />
+    <EntitySet Name="Рабочие_дни" EntityType="Self.Рабочие_дни" />
+    <EntitySet Name="Тренеры" EntityType="Self.Тренеры" />
+    <AssociationSet Name="FK_Заявка_на_обучение_Администраторы" Association="Self.FK_Заявка_на_обучение_Администраторы">
+      <End Role="Администраторы" EntitySet="Администраторы" />
+      <End Role="Заявка_на_обучение" EntitySet="Заявка_на_обучение" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Предоставление_cкидки_Администраторы" Association="Self.FK_Предоставление_cкидки_Администраторы">
+      <End Role="Администраторы" EntitySet="Администраторы" />
+      <End Role="Предоставление_cкидки" EntitySet="Предоставление_cкидки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Запись_на_занятие_Клиенты" Association="Self.FK_Запись_на_занятие_Клиенты">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Запись_на_занятие" EntitySet="Запись_на_занятие" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Запись_на_занятие_Тренеры" Association="Self.FK_Запись_на_занятие_Тренеры">
+      <End Role="Тренеры" EntitySet="Тренеры" />
+      <End Role="Запись_на_занятие" EntitySet="Запись_на_занятие" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_инд_занятия_Клиенты" Association="Self.FK_Заявка_на_инд_занятия_Клиенты">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Заявка_на_инд_занятия" EntitySet="Заявка_на_инд_занятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_инд_занятия_Тренеры" Association="Self.FK_Заявка_на_инд_занятия_Тренеры">
+      <End Role="Тренеры" EntitySet="Тренеры" />
+      <End Role="Заявка_на_инд_занятия" EntitySet="Заявка_на_инд_занятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_обучение_Тренеры" Association="Self.FK_Заявка_на_обучение_Тренеры">
+      <End Role="Тренеры" EntitySet="Тренеры" />
+      <End Role="Заявка_на_обучение" EntitySet="Заявка_на_обучение" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Индивидуальное_занятия_Клиенты" Association="Self.FK_Индивидуальное_занятия_Клиенты">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Индивидуальное_занятия" EntitySet="Индивидуальное_занятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Индивидуальное_занятия_Тренеры" Association="Self.FK_Индивидуальное_занятия_Тренеры">
+      <End Role="Тренеры" EntitySet="Тренеры" />
+      <End Role="Индивидуальное_занятия" EntitySet="Индивидуальное_занятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Предоставление_cкидки_Клиенты" Association="Self.FK_Предоставление_cкидки_Клиенты">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Предоставление_cкидки" EntitySet="Предоставление_cкидки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Рабочие_дни_Тренеры" Association="Self.FK_Рабочие_дни_Тренеры">
+      <End Role="Тренеры" EntitySet="Тренеры" />
+      <End Role="Рабочие_дни" EntitySet="Рабочие_дни" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

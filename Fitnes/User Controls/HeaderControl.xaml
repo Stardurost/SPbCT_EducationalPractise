@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Fitnes.User_Controls.HeaderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fitnes.User_Controls"
+             mc:Ignorable="d" Background="#1a1a1a">
+    <Grid VerticalAlignment="Center" Background="#1a1a1a">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" DataContextChanged="StackPanel_DataContextChanged" Background="#1a1a1a" Width="300">
+            <TextBlock x:Name="BlockDay" Style="{StaticResource BlockHeaderDay}" Text="ПН" Foreground="Aqua"></TextBlock>
+            <TextBlock x:Name="BlockDate" Style="{StaticResource BlockCommon}" Width="auto" TextAlignment="Center" Text="30.05" Foreground="Aqua"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

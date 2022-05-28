@@ -1,0 +1,27 @@
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.AssemblyReference.cache
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.SuggestedBindingRedirects.cache
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\MainWindow.g.cs
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes_Content.g.cs
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes_MarkupCompile.cache
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes_MarkupCompile.lref
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\App.g.cs
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\Fitnes.exe.config
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\Fitnes.exe
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\Fitnes.pdb
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\EntityFramework.dll
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\EntityFramework.xml
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\App.baml
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\MainWindow.baml
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.g.resources
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.Properties.Resources.resources
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.GenerateResource.cache
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.CoreCompileInputs.cache
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.CopyComplete
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.exe
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\Fitnes.pdb
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\User Controls\HeaderControl.g.cs
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\User Controls\HeaderControl.baml
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\User Controls\AppointmentControl.g.cs
+C:\Users\Machenike\source\repos\Fitnes\Fitnes\obj\Debug\User Controls\AppointmentControl.baml

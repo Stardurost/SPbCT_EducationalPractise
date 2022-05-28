@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FitnesStoreContainer" CdmEntityContainer="FITNESSEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Fitnes.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Администраторы">
+      <EntityTypeMapping TypeName="Fitnes.Администраторы">
+        <MappingFragment StoreEntitySet="Администраторы">
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+          <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Фото" ColumnName="Фото" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Запись_на_занятие">
+      <EntityTypeMapping TypeName="Fitnes.Запись_на_занятие">
+        <MappingFragment StoreEntitySet="Запись_на_занятие">
+          <ScalarProperty Name="Номер_занятия" ColumnName="Номер_занятия" />
+          <ScalarProperty Name="Тренер" ColumnName="Тренер" />
+          <ScalarProperty Name="Ученик" ColumnName="Ученик" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Время_начала" ColumnName="Время_начала" />
+          <ScalarProperty Name="Время_окончания" ColumnName="Время_окончания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заявка_на_инд_занятия">
+      <EntityTypeMapping TypeName="Fitnes.Заявка_на_инд_занятия">
+        <MappingFragment StoreEntitySet="Заявка_на_инд_занятия">
+          <ScalarProperty Name="Клиент" ColumnName="Клиент" />
+          <ScalarProperty Name="Тренер" ColumnName="Тренер" />
+          <ScalarProperty Name="Цель_занятий" ColumnName="Цель_занятий" />
+          <ScalarProperty Name="Номер_заявки" ColumnName="Номер_заявки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заявка_на_обучение">
+      <EntityTypeMapping TypeName="Fitnes.Заявка_на_обучение">
+        <MappingFragment StoreEntitySet="Заявка_на_обучение">
+          <ScalarProperty Name="Номер_заявки" ColumnName="Номер_заявки" />
+          <ScalarProperty Name="Тренер" ColumnName="Тренер" />
+          <ScalarProperty Name="Администратор" ColumnName="Администратор" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Квалификация" ColumnName="Квалификация" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Индивидуальное_занятия">
+      <EntityTypeMapping TypeName="Fitnes.Индивидуальное_занятия">
+        <MappingFragment StoreEntitySet="Индивидуальное_занятия">
+          <ScalarProperty Name="Упражнение" ColumnName="Упражнение" />
+          <ScalarProperty Name="Количество_повторов" ColumnName="Количество_повторов" />
+          <ScalarProperty Name="Выполнение_упражнения" ColumnName="Выполнение_упражнения" />
+          <ScalarProperty Name="Тренер" ColumnName="Тренер" />
+          <ScalarProperty Name="Ученик" ColumnName="Ученик" />
+          <ScalarProperty Name="Номер_занятия" ColumnName="Номер_занятия" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Время_начала" ColumnName="Время_начала" />
+          <ScalarProperty Name="Время_окончания" ColumnName="Время_окончания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Клиенты">
+      <EntityTypeMapping TypeName="Fitnes.Клиенты">
+        <MappingFragment StoreEntitySet="Клиенты">
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+          <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Фото" ColumnName="Фото" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Предоставление_cкидки">
+      <EntityTypeMapping TypeName="Fitnes.Предоставление_cкидки">
+        <MappingFragment StoreEntitySet="Предоставление_cкидки">
+          <ScalarProperty Name="Номер" ColumnName="Номер" />
+          <ScalarProperty Name="Администратор" ColumnName="Администратор" />
+          <ScalarProperty Name="Клиент" ColumnName="Клиент" />
+          <ScalarProperty Name="Размер_скидки" ColumnName="Размер_скидки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Рабочие_дни">
+      <EntityTypeMapping TypeName="Fitnes.Рабочие_дни">
+        <MappingFragment StoreEntitySet="Рабочие_дни">
+          <ScalarProperty Name="Номер_записи" ColumnName="Номер_записи" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Время_начала" ColumnName="Время_начала" />
+          <ScalarProperty Name="Время_окончания" ColumnName="Время_окончания" />
+          <ScalarProperty Name="Тренер" ColumnName="Тренер" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Тренеры">
+      <EntityTypeMapping TypeName="Fitnes.Тренеры">
+        <MappingFragment StoreEntitySet="Тренеры">
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+          <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Фото" ColumnName="Фото" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

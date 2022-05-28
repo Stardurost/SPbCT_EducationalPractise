@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f4d3cea4b384ff9aba2889152976224" Name="Diagram1">
+        <EntityTypeShape EntityType="FITNESSModel.Admin" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Client" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Exercise" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Registration" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Sale" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Trainer" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.WorkDay" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Заявка_на_инд_занятия" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITNESSModel.Заявка_на_обучение" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <AssociationConnector Association="FITNESSModel.FK_Заявка_на_обучение_Администраторы" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Предоставление_cкидки_Администраторы" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Запись_на_занятие_Клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Заявка_на_инд_занятия_Клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Индивидуальное_занятия_Клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Предоставление_cкидки_Клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Индивидуальное_занятия_Тренеры" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Запись_на_занятие_Тренеры" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Заявка_на_инд_занятия_Тренеры" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Заявка_на_обучение_Тренеры" ManuallyRouted="false" />
+        <AssociationConnector Association="FITNESSModel.FK_Рабочие_дни_Тренеры" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

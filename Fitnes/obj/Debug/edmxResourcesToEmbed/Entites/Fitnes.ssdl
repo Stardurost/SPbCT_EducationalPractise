@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FITNESSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Номер_паспорта" />
+    </Key>
+    <Property Name="ФИО" Type="nchar" MaxLength="100" />
+    <Property Name="Номер_телефона" Type="nchar" MaxLength="11" />
+    <Property Name="Номер_паспорта" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Дата_рождения" Type="date" />
+    <Property Name="Фото" Type="image" />
+    <Property Name="Пароль" Type="nchar" MaxLength="10" />
+    <Property Name="Пол" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="NumberPassport" />
+    </Key>
+    <Property Name="Name" Type="nchar" MaxLength="100" />
+    <Property Name="NumberPhone" Type="nchar" MaxLength="11" />
+    <Property Name="NumberPassport" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="DateBirth" Type="date" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="Password" Type="nchar" MaxLength="10" />
+    <Property Name="Gender" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Exercise">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Exercise" Type="nchar" MaxLength="10" />
+    <Property Name="Count" Type="int" />
+    <Property Name="Done" Type="bit" />
+    <Property Name="Trainer" Type="nchar" MaxLength="10" />
+    <Property Name="Client" Type="nchar" MaxLength="10" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="StartTime" Type="time" Precision="7" />
+    <Property Name="EndTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Trainer" Type="nchar" MaxLength="10" />
+    <Property Name="Client" Type="nchar" MaxLength="10" />
+    <Property Name="Date" Type="date" />
+    <Property Name="StartTime" Type="time" Precision="7" />
+    <Property Name="EndTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Admin" Type="nchar" MaxLength="10" />
+    <Property Name="Client" Type="nchar" MaxLength="10" />
+    <Property Name="Sale" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Trainers">
+    <Key>
+      <PropertyRef Name="NumberPassport" />
+    </Key>
+    <Property Name="Name" Type="nchar" MaxLength="45" />
+    <Property Name="NumberPhone" Type="nchar" MaxLength="11" />
+    <Property Name="NumberPassport" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="DateBirth" Type="date" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="Password" Type="nchar" MaxLength="10" />
+    <Property Name="Gender" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="WorkDays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="StartTime" Type="time" Precision="7" />
+    <Property Name="EndTime" Type="time" Precision="7" />
+    <Property Name="Trainer" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Заявка_на_инд_занятия">
+    <Key>
+      <PropertyRef Name="Номер_заявки" />
+    </Key>
+    <Property Name="Клиент" Type="nchar" MaxLength="10" />
+    <Property Name="Тренер" Type="nchar" MaxLength="10" />
+    <Property Name="Цель_занятий" Type="nchar" MaxLength="100" />
+    <Property Name="Номер_заявки" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Заявка_на_обучение">
+    <Key>
+      <PropertyRef Name="Номер_заявки" />
+    </Key>
+    <Property Name="Номер_заявки" Type="int" Nullable="false" />
+    <Property Name="Тренер" Type="nchar" MaxLength="10" />
+    <Property Name="Администратор" Type="nchar" MaxLength="10" />
+    <Property Name="Дата" Type="date" />
+    <Property Name="Квалификация" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Запись_на_занятие_Клиенты">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Запись_на_занятие_Тренеры">
+    <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainers">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="Trainer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_инд_занятия_Клиенты">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Заявка_на_инд_занятия" Type="Self.Заявка_на_инд_занятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Заявка_на_инд_занятия">
+        <PropertyRef Name="Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_инд_занятия_Тренеры">
+    <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1" />
+    <End Role="Заявка_на_инд_занятия" Type="Self.Заявка_на_инд_занятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainers">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Заявка_на_инд_занятия">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_обучение_Администраторы">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Заявка_на_обучение" Type="Self.Заявка_на_обучение" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Заявка_на_обучение">
+        <PropertyRef Name="Администратор" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_на_обучение_Тренеры">
+    <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1" />
+    <End Role="Заявка_на_обучение" Type="Self.Заявка_на_обучение" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainers">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Заявка_на_обучение">
+        <PropertyRef Name="Тренер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Индивидуальное_занятия_Клиенты">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Exercise">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Индивидуальное_занятия_Тренеры">
+    <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1" />
+    <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainers">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Exercise">
+        <PropertyRef Name="Trainer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Предоставление_cкидки_Администраторы">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="Номер_паспорта" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Предоставление_cкидки_Клиенты">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Рабочие_дни_Тренеры">
+    <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1" />
+    <End Role="WorkDays" Type="Self.WorkDays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainers">
+        <PropertyRef Name="NumberPassport" />
+      </Principal>
+      <Dependent Role="WorkDays">
+        <PropertyRef Name="Trainer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FITNESSModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exercise" EntityType="Self.Exercise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainers" EntityType="Self.Trainers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkDays" EntityType="Self.WorkDays" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заявка_на_инд_занятия" EntityType="Self.Заявка_на_инд_занятия" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заявка_на_обучение" EntityType="Self.Заявка_на_обучение" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Запись_на_занятие_Клиенты" Association="Self.FK_Запись_на_занятие_Клиенты">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Registration" EntitySet="Registration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Запись_на_занятие_Тренеры" Association="Self.FK_Запись_на_занятие_Тренеры">
+      <End Role="Trainers" EntitySet="Trainers" />
+      <End Role="Registration" EntitySet="Registration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_инд_занятия_Клиенты" Association="Self.FK_Заявка_на_инд_занятия_Клиенты">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Заявка_на_инд_занятия" EntitySet="Заявка_на_инд_занятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_инд_занятия_Тренеры" Association="Self.FK_Заявка_на_инд_занятия_Тренеры">
+      <End Role="Trainers" EntitySet="Trainers" />
+      <End Role="Заявка_на_инд_занятия" EntitySet="Заявка_на_инд_занятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_обучение_Администраторы" Association="Self.FK_Заявка_на_обучение_Администраторы">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Заявка_на_обучение" EntitySet="Заявка_на_обучение" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_на_обучение_Тренеры" Association="Self.FK_Заявка_на_обучение_Тренеры">
+      <End Role="Trainers" EntitySet="Trainers" />
+      <End Role="Заявка_на_обучение" EntitySet="Заявка_на_обучение" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Индивидуальное_занятия_Клиенты" Association="Self.FK_Индивидуальное_занятия_Клиенты">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Exercise" EntitySet="Exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Индивидуальное_занятия_Тренеры" Association="Self.FK_Индивидуальное_занятия_Тренеры">
+      <End Role="Trainers" EntitySet="Trainers" />
+      <End Role="Exercise" EntitySet="Exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Предоставление_cкидки_Администраторы" Association="Self.FK_Предоставление_cкидки_Администраторы">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Предоставление_cкидки_Клиенты" Association="Self.FK_Предоставление_cкидки_Клиенты">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Рабочие_дни_Тренеры" Association="Self.FK_Рабочие_дни_Тренеры">
+      <End Role="Trainers" EntitySet="Trainers" />
+      <End Role="WorkDays" EntitySet="WorkDays" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
